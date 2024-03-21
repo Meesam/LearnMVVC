@@ -1,0 +1,35 @@
+﻿@model EmployeeVM
+
+@{
+ ViewData["Title"] = "Add Employee";
+}
+
+<div class="container">
+    <form asp-action="AddEmployee" method="post">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Name</label>
+            <input type="text" asp-for="Name" class="form-control" placeholder="Enter name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Email</label>
+            <input type="text" asp-for="Email" class="form-control" placeholder="Enter email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Dob</label>
+            <input type="date" asp-for="Dob" class="form-control" placeholder="Enter dob">
+            <span asp-validation-for="Dob" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" asp-area="" asp-controller="Employee" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
