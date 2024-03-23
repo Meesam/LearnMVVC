@@ -1,0 +1,26 @@
+﻿@model Department
+
+@{
+    ViewData["Title"] = "Add Department";
+}
+
+<div class="container">
+    <form asp-action="AddDepartment" method="post">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Title</label>
+            <input type="text" asp-for="Title" class="form-control" placeholder="Enter name">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-primary" asp-area="" asp-controller="Department" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -22,6 +22,11 @@
             <span asp-validation-for="Dob" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Department</label>
+            <select class="form-select-sm" asp-for="DepartmentId" asp-items="@Model.Departments"></select>
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
             <a class="btn btn-primary" asp-area="" asp-controller="Employee" asp-action="Index">Cancel</a>
         </div>

@@ -2,6 +2,7 @@
 using LearnMVVC.Models;
 using LearnMVVC.Models.DataModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace LearnMVVC.Controllers
@@ -23,7 +24,12 @@ namespace LearnMVVC.Controllers
 
         public IActionResult AddEmployee()
         {
-            return View();
+            var departments = _employeeDbContext.Departments.ToList();
+            var employeeVM = new EmployeeVM
+            {
+                Departments = departments.Select(d => new SelectListItem { Text = d.Title, Value = d.Id.ToString() }).ToList()
+            };
+            return View(employeeVM);
         }
 
         [HttpPost]
@@ -35,10 +41,12 @@ namespace LearnMVVC.Controllers
                 {
                     Name = emp.Name,
                     Email = emp.Email,
-                    Dob = emp.Dob
+                    Dob = emp.Dob,
+
                 };
                 _employeeDbContext.Employees.Add(employee);
                 _employeeDbContext.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(emp);
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace LearnMVVC.Models
 {
@@ -16,5 +17,16 @@ namespace LearnMVVC.Models
         [Required(ErrorMessage = "Dob is required")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Dob { get; set; }
-    }
+
+        public string Gender { get; set; } = string.Empty;
+
+        public Boolean IsManager { get; set; }
+
+        [Required(ErrorMessage = "Department is required")]
+        public int DepartmentId { get; set; }
+
+        public List<SelectListItem>? Departments { get; set; }
+
+    };
+
 }

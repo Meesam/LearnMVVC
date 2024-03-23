@@ -17,5 +17,12 @@ namespace LearnMVVC.Models.DataModel
 
         [Required]
         public DateTime Dob { get; set; }
+
+        public string Gender { get; set; } = string.Empty;
+
+        public Boolean IsManager { get; set; }
+
+        [Required]
+        public int DepartmentId { get; set; }
     }
 }
