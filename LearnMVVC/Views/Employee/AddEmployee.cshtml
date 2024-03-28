@@ -27,6 +27,14 @@
             <span asp-validation-for="DepartmentId" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Is Manager</label>
+            <input type="checkbox" asp-for="IsManager" />
+        </div>
+        <div class="mb-3">
+            Male:   @Html.RadioButton("Gender", "Male")
+            Female: @Html.RadioButton("Gender", "Female")
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
             <a class="btn btn-primary" asp-area="" asp-controller="Employee" asp-action="Index">Cancel</a>
         </div>

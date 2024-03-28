@@ -42,7 +42,9 @@ namespace LearnMVVC.Controllers
                     Name = emp.Name,
                     Email = emp.Email,
                     Dob = emp.Dob,
-
+                    DepartmentId = emp.DepartmentId,
+                    IsManager = emp.IsManager,
+                    Gender = emp.Gender
                 };
                 _employeeDbContext.Employees.Add(employee);
                 _employeeDbContext.SaveChanges();
@@ -54,6 +56,8 @@ namespace LearnMVVC.Controllers
         public async Task<IActionResult> EditEmployee(int id)
         {
             var employee = await _employeeDbContext.Employees.FindAsync(id);
+            var departments = _employeeDbContext.Departments.ToList();
+           
             if (employee is not null)
             {
                 var employeeVM = new EmployeeVM
@@ -61,7 +65,11 @@ namespace LearnMVVC.Controllers
                     Email = employee.Email,
                     Name = employee.Name,
                     Dob = employee.Dob,
-                    Id = employee.Id
+                    Id = employee.Id,
+                    Departments = departments.Select(d => new SelectListItem { Text = d.Title, Value = d.Id.ToString() }).ToList(),
+                    DepartmentId=employee.DepartmentId,
+                    IsManager = employee.IsManager,
+                    Gender = employee.Gender
                 };
                 return View("AddEmployee", employeeVM);
             }
